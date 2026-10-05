@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "muuv9x6s",
+    "typ": "geist",
+    "name": "Getränke und Grusel",
+    "addr": "20, Friedhofstraße, Bechhofen, Zweibrücken-Land",
+    "lat": 49.350664,
+    "lon": 7.4076389
+  },
+  {
+    "id": "muuvaome",
+    "typ": "tuer",
+    "name": "",
+    "addr": "2, Friedhofstraße, Bechhofen, Zweibrücken-Land",
+    "lat": 49.3503315,
+    "lon": 7.407351
+  }
+]
