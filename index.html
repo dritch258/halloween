@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="style.css">
 <style>
 #map{position:fixed;inset:0}
-.top{position:fixed;z-index:1000;top:max(12px,env(safe-area-inset-top));left:12px;max-width:calc(100% - 24px);display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--surf);border:1px solid var(--line);border-radius:99px;backdrop-filter:blur(10px)}
 .top small{color:var(--muted);font-size:13px}
 .chips{position:fixed;z-index:1000;left:12px;right:12px;bottom:max(14px,env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .chip{display:flex;align-items:center;justify-content:center;gap:6px;min-height:48px;padding:0 6px;font-size:14px;white-space:nowrap;color:var(--text);background:var(--surf);border:2px solid var(--c);border-radius:16px;backdrop-filter:blur(10px)}
@@ -18,15 +17,19 @@
 .loc{position:fixed;z-index:1000;right:12px;bottom:calc(max(14px,env(safe-area-inset-bottom)) + 70px);width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surf);color:var(--text);font-size:20px;backdrop-filter:blur(10px)}
 @media(min-width:700px){.chips{left:50%;right:auto;transform:translateX(-50%);width:520px}.loc{bottom:90px}}
 #cnt{background:none;border:0;color:var(--muted);font-size:13px;text-decoration:underline;min-height:36px;padding:0}
-.sheet{display:none;position:fixed;z-index:1001;left:12px;right:12px;top:calc(max(12px,env(safe-area-inset-top)) + 64px);max-height:55dvh;overflow:auto;margin:0;padding:0;list-style:none;background:var(--surf);border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(12px)}
-.sheet.open{display:block}
-.sheet li{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);cursor:pointer;min-height:56px}
-.sheet li:last-child{border-bottom:0}
-.sheet li:active{background:rgba(255,255,255,.08)}
+.top{position:fixed;z-index:1000;top:max(12px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 18px;background:var(--surf);border:1px solid var(--line);border-radius:99px;backdrop-filter:blur(10px)}
+.sheet{display:none;flex-direction:column;position:fixed;z-index:1001;left:50%;transform:translateX(-50%);width:min(420px,calc(100% - 24px));top:calc(max(12px,env(safe-area-inset-top)) + 64px);max-height:60dvh;background:var(--surf);border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(12px);overflow:hidden}
+.sheet.open{display:flex}
+#q{margin:10px;min-height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--text);font:inherit;font-size:16px}
+#slist{list-style:none;margin:0;padding:0;overflow:auto}
+.grp{position:sticky;top:0;padding:8px 16px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--c);background:#1b1029;border-bottom:1px solid var(--line)}
+.sheet li:not(.grp):not(.none){display:flex;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);cursor:pointer;min-height:52px}
+.sheet li:not(.grp):not(.none):active{background:rgba(255,255,255,.08)}
+.none{padding:16px;color:var(--muted)}
 .sheet li>span{font-size:22px}
-.sheet b,.sheet small{display:block}
+.sheet li div{min-width:0}
+.sheet b,.sheet small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sheet small{color:var(--muted)}
-@media(min-width:700px){.sheet{right:auto;width:380px}}
 .leaflet-bottom{margin-bottom:76px}
 @media(pointer:coarse){.leaflet-control-zoom{display:none}}
 @media(max-width:480px){.top{padding:8px 14px;gap:8px}.top h1{font-size:22px}.top small{font-size:12px}.chip{font-size:13px}}
@@ -35,7 +38,7 @@
 <body>
 <div id="map"></div>
 <div class="top"><h1>🎃 Halloween 2026</h1><button id="cnt" aria-expanded="false" aria-controls="sheet"></button></div>
-<ul class="sheet" id="sheet" aria-label="Adressen"></ul>
+<div class="sheet" id="sheet" role="dialog" aria-label="Adressen"><input type="search" id="q" placeholder="Suchen …" aria-label="Adressen durchsuchen"><ul id="slist"></ul></div>
 <button class="loc" id="loc" aria-label="Meinen Standort anzeigen">📍</button>
 <nav class="chips" id="chips" aria-label="Filter"></nav>
 
@@ -59,22 +62,38 @@ Object.keys(TYPES).forEach(k => {
 });
 
 fetch("adressen.json?t=" + Date.now()).then(r => r.json()).then(spots => {
-  const cnt = $("cnt"), sheet = $("sheet");
-  spots.forEach(s => {
-    const k = typeOf(s);
-    const m = L.marker([s.lat, s.lon], { icon: pinIcon(k), title: s.name || "" }).bindPopup(popupHtml(s)).addTo(groups[k]);
-    const li = document.createElement("li");
-    li.innerHTML = `<span>${TYPES[k].emoji}</span><div>${s.name ? `<b>${esc(s.name)}</b>` : ""}<small>${esc(s.addr)}</small></div>`;
-    li.onclick = () => {
-      if (btns[k].getAttribute("aria-pressed") !== "true") btns[k].click();
-      sheet.classList.remove("open"); cnt.setAttribute("aria-expanded", "false");
-      map.flyTo([s.lat, s.lon], 17); m.openPopup();
-    };
-    sheet.appendChild(li);
-  });
+  const cnt = $("cnt"), sheet = $("sheet"), list = $("slist"), q = $("q"), marks = new Map();
+  spots.forEach(s => { const k = typeOf(s);
+    marks.set(s, L.marker([s.lat, s.lon], { icon: pinIcon(k), title: s.name || "" }).bindPopup(popupHtml(s)).addTo(groups[k])); });
+  const close = () => { sheet.classList.remove("open"); cnt.setAttribute("aria-expanded", "false"); };
+  q.hidden = spots.length <= 6;
+  const fill = () => {
+    const t = q.value.trim().toLowerCase();
+    list.innerHTML = "";
+    Object.keys(TYPES).forEach(k => {
+      const items = spots.filter(s => typeOf(s) === k && ((s.name || "") + " " + s.addr).toLowerCase().includes(t))
+        .sort((a, b) => (a.name || a.addr).localeCompare(b.name || b.addr, "de"));
+      if (!items.length) return;
+      const g = document.createElement("li");
+      g.className = "grp"; g.style.setProperty("--c", TYPES[k].color);
+      g.textContent = TYPES[k].emoji + " " + TYPES[k].label + " \u00b7 " + items.length;
+      list.appendChild(g);
+      items.forEach(s => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${TYPES[k].emoji}</span><div>${s.name ? `<b>${esc(s.name)}</b>` : ""}<small>${esc(s.addr)}</small></div>`;
+        li.onclick = () => {
+          if (btns[k].getAttribute("aria-pressed") !== "true") btns[k].click();
+          close(); map.flyTo([s.lat, s.lon], 17); marks.get(s).openPopup();
+        };
+        list.appendChild(li);
+      });
+    });
+    if (!list.children.length) list.innerHTML = '<li class="none">Keine Treffer.</li>';
+  };
+  q.oninput = fill;
   cnt.textContent = spots.length ? spots.length + (spots.length === 1 ? " Adresse" : " Adressen") : "Noch keine Adressen";
-  cnt.onclick = () => { if (!spots.length) return; const o = sheet.classList.toggle("open"); cnt.setAttribute("aria-expanded", o); };
-  map.on("click", () => { sheet.classList.remove("open"); cnt.setAttribute("aria-expanded", "false"); });
+  cnt.onclick = () => { if (!spots.length) return; if (sheet.classList.contains("open")) return close(); fill(); sheet.classList.add("open"); cnt.setAttribute("aria-expanded", "true"); };
+  map.on("click", close);
   fitTo(map, spots);
 }).catch(() => { $("cnt").textContent = "Daten nicht ladbar"; });
 
