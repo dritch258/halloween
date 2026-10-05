@@ -1,18 +1,26 @@
 [
   {
-    "id": "muuv9x6s",
+    "id": "muvblx5y",
     "typ": "geist",
-    "name": "Getränke und Grusel",
-    "addr": "20, Friedhofstraße, Bechhofen, Zweibrücken-Land",
+    "name": "Horrohaus",
+    "addr": "Friedhofstraße 20",
     "lat": 49.350664,
     "lon": 7.4076389
   },
   {
-    "id": "muuvaome",
-    "typ": "tuer",
+    "id": "muvbmma7",
+    "typ": "klingel",
     "name": "",
-    "addr": "2, Friedhofstraße, Bechhofen, Zweibrücken-Land",
+    "addr": "Friedhofstraße 2",
     "lat": 49.3503315,
     "lon": 7.407351
+  },
+  {
+    "id": "muvbn4ch",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Mozartstraße 15",
+    "lat": 49.3522787,
+    "lon": 7.3985904
   }
 ]
