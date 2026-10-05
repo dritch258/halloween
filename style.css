@@ -1,0 +1,20 @@
+:root{--bg:#120a1a;--surf:rgba(30,18,44,.86);--line:rgba(255,255,255,.12);--text:#f5eefc;--muted:#b6a5cc;--orange:#ff8a3d;--slime:#a3e635;
+--geist:#a78bfa;--klingel:#fbbf24;--tuer:#fb923c;--r:16px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--text);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1{font:400 28px/1 Creepster,Impact,fantasy;letter-spacing:.04em;margin:0;color:var(--orange);text-shadow:0 2px 0 #000}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--slime);outline-offset:2px}
+.leaflet-container{background:#0d0715;font:inherit}
+.leaflet-tile-pane{filter:invert(1) hue-rotate(200deg) saturate(.55) brightness(.85) contrast(.95)}
+.leaflet-control-zoom{border:0!important;box-shadow:none!important}
+.leaflet-control-zoom a{background:var(--surf)!important;color:var(--text)!important;border:1px solid var(--line)!important;backdrop-filter:blur(8px);width:40px!important;height:40px!important;line-height:40px!important;border-radius:12px!important;margin-bottom:6px}
+.leaflet-control-attribution{background:rgba(18,10,26,.7)!important;color:var(--muted)!important;font-size:10px}
+.leaflet-control-attribution a{color:var(--muted)!important}
+.pin{width:42px;height:42px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);background:#1e122c;border:3px solid var(--c);display:grid;place-items:center;box-shadow:0 0 14px var(--c),0 4px 10px #000a}
+.pin span{transform:rotate(45deg);font-size:21px;line-height:1}
+.leaflet-popup-content-wrapper{background:var(--surf);color:var(--text);border:1px solid var(--line);border-radius:var(--r);backdrop-filter:blur(10px)}
+.leaflet-popup-tip{background:#1e122c}
+.leaflet-popup-content{margin:12px 16px;font-size:15px}
+.tag{display:inline-block;margin-top:6px;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:700;color:#120a1a;background:var(--c)}

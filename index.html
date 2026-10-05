@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#120a1a">
+<title>Süßes oder Saures – Karte</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Creepster&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+#map{position:fixed;inset:0}
+.top{position:fixed;z-index:1000;top:max(12px,env(safe-area-inset-top));left:12px;display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--surf);border:1px solid var(--line);border-radius:99px;backdrop-filter:blur(10px)}
+.top small{color:var(--muted);font-size:13px}
+.chips{position:fixed;z-index:1000;left:0;right:0;bottom:max(14px,env(safe-area-inset-bottom));display:flex;gap:8px;padding:0 12px;overflow-x:auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;color:var(--text);background:var(--surf);border:2px solid var(--c);border-radius:99px;backdrop-filter:blur(10px)}
+.chip[aria-pressed=false]{border-color:var(--line);color:var(--muted);opacity:.7}
+.loc{position:fixed;z-index:1000;right:12px;bottom:calc(max(14px,env(safe-area-inset-bottom)) + 62px);width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surf);color:var(--text);font-size:20px;backdrop-filter:blur(10px)}
+@media(min-width:700px){.chips{justify-content:center}.loc{bottom:90px}}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div class="top"><h1>🎃 Süßes oder Saures</h1><small id="cnt"></small></div>
+<button class="loc" id="loc" aria-label="Meinen Standort anzeigen">📍</button>
+<nav class="chips" id="chips" aria-label="Filter"></nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="common.js"></script>
+<script>
+const map = newMap("map");
+const groups = {};
+const chips = document.getElementById("chips");
+Object.keys(TYPES).forEach(k => {
+  groups[k] = L.layerGroup().addTo(map);
+  const b = document.createElement("button");
+  b.className = "chip"; b.style.setProperty("--c", TYPES[k].color); b.setAttribute("aria-pressed", "true");
+  b.innerHTML = `<span>${TYPES[k].emoji}</span>${TYPES[k].short}`;
+  b.onclick = () => {
+    const on = b.getAttribute("aria-pressed") !== "true";
+    b.setAttribute("aria-pressed", on);
+    on ? groups[k].addTo(map) : map.removeLayer(groups[k]);
+  };
+  chips.appendChild(b);
+});
+
+fetch("adressen.json?t=" + Date.now()).then(r => r.json()).then(spots => {
+  spots.forEach(s => L.marker([s.lat, s.lon], { icon: pinIcon(typeOf(s)), title: s.name || "" }).bindPopup(popupHtml(s)).addTo(groups[typeOf(s)]));
+  document.getElementById("cnt").textContent = spots.length ? spots.length + " Orte" : "Noch keine Orte";
+  fitTo(map, spots);
+}).catch(() => { document.getElementById("cnt").textContent = "Daten nicht ladbar"; });
+
+let me;
+document.getElementById("loc").onclick = () => map.locate({ setView: true, maxZoom: 16 });
+map.on("locationfound", e => { me && me.remove(); me = L.circleMarker(e.latlng, { radius: 8, color: "#fff", weight: 3, fillColor: "#3b82f6", fillOpacity: 1 }).addTo(map); });
+map.on("locationerror", () => alert("Standort nicht verfügbar. Prüf die Freigabe im Browser."));
+</script>
+</body>
+</html>
