@@ -6,11 +6,19 @@ const TYPES = {
   tuer:    { emoji: "🚪", short: "Vor der Tür", label: "Süßigkeiten vor der Haustür",   color: "#fb923c" }
 };
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+// Kürzt Adressen auf "Straße Hausnummer" (auch ältere, lange Einträge aus der JSON)
+const shortAddr = a => { const p = String(a || "").split(", ");
+  for (let i = 0; i < p.length - 1; i++) if (/^\d+[a-z]?([-–\/]\d+[a-z]?)?$/i.test(p[i])) return p[i + 1] + " " + p[i];
+  return p[0]; };
+// Nominatim-Ergebnis (mit addressdetails) -> "Straße Hausnummer"
+const addrOf = r => { const a = r.address || {};
+  const road = a.road || a.pedestrian || a.footway || a.path || a.cycleway || a.residential || a.square || "";
+  return road ? road + (a.house_number ? " " + a.house_number : "") : shortAddr(r.display_name); };
 const typeOf = s => TYPES[s.typ] ? s.typ : "tuer";
 const pinIcon = k => L.divIcon({ className: "", iconSize: [42, 42], iconAnchor: [4, 42], popupAnchor: [17, -42],
   html: `<div class="pin" style="--c:${TYPES[k].color}"><span>${TYPES[k].emoji}</span></div>` });
 const popupHtml = s => { const k = typeOf(s);
-  return `${s.name ? `<b>${esc(s.name)}</b><br>` : ""}${esc(s.addr)}<br><span class="tag" style="--c:${TYPES[k].color}">${TYPES[k].emoji} ${TYPES[k].label}</span>`; };
+  return `${s.name ? `<b>${esc(s.name)}</b><br>` : ""}${esc(shortAddr(s.addr))}<br><span class="tag" style="--c:${TYPES[k].color}">${TYPES[k].emoji} ${TYPES[k].label}</span>`; };
 function newMap(id) {
   const map = L.map(id, { zoomControl: false }).setView([51.2, 10.4], 6);
   L.control.zoom({ position: "topright" }).addTo(map);

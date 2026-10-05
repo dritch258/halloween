@@ -73,7 +73,15 @@ fetch("adressen.json?t=" + Date.now()).then(r => { stand = r.headers.get("Last-M
     list.innerHTML = "";
     Object.keys(TYPES).forEach(k => {
       const items = spots.filter(s => typeOf(s) === k && ((s.name || "") + " " + s.addr).toLowerCase().includes(t))
+<<<<<<< Updated upstream
         .sort((a, b) => (a.name || a.addr).localeCompare(b.name || b.addr, "de"));
+=======
+<<<<<<< HEAD
+        .sort((a, b) => (a.name || shortAddr(a.addr)).localeCompare(b.name || shortAddr(b.addr), "de"));
+=======
+        .sort((a, b) => (a.name || a.addr).localeCompare(b.name || b.addr, "de"));
+>>>>>>> 344a6dc42923a98ac5ed51a1c1fae2823754f269
+>>>>>>> Stashed changes
       if (!items.length) return;
       const g = document.createElement("li");
       g.className = "grp"; g.style.setProperty("--c", TYPES[k].color);
@@ -81,7 +89,15 @@ fetch("adressen.json?t=" + Date.now()).then(r => { stand = r.headers.get("Last-M
       list.appendChild(g);
       items.forEach(s => {
         const li = document.createElement("li");
+<<<<<<< Updated upstream
         li.innerHTML = `<span>${TYPES[k].emoji}</span><div>${s.name ? `<b>${esc(s.name)}</b>` : ""}<small>${esc(s.addr)}</small></div>`;
+=======
+<<<<<<< HEAD
+        li.innerHTML = `<span>${TYPES[k].emoji}</span><div>${s.name ? `<b>${esc(s.name)}</b>` : ""}<small>${esc(shortAddr(s.addr))}</small></div>`;
+=======
+        li.innerHTML = `<span>${TYPES[k].emoji}</span><div>${s.name ? `<b>${esc(s.name)}</b>` : ""}<small>${esc(s.addr)}</small></div>`;
+>>>>>>> 344a6dc42923a98ac5ed51a1c1fae2823754f269
+>>>>>>> Stashed changes
         li.onclick = () => {
           if (btns[k].getAttribute("aria-pressed") !== "true") btns[k].click();
           close(); map.flyTo([s.lat, s.lon], 17); marks.get(s).openPopup();
