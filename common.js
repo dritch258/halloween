@@ -1,3 +1,5 @@
+// Optional: kostenloser CARTO-Key von carto.com/basemaps/apikey. Leer lassen = Esri-Karte ohne Key.
+const CARTO_KEY = "";
 const TYPES = {
   geist:   { emoji: "👻", short: "Attraktion",  label: "Attraktion",                    color: "#a78bfa" },
   klingel: { emoji: "🔔", short: "Klingeln",    label: "Klingeln für Süßigkeiten",      color: "#fbbf24" },
@@ -12,7 +14,15 @@ const popupHtml = s => { const k = typeOf(s);
 function newMap(id) {
   const map = L.map(id, { zoomControl: false }).setView([51.2, 10.4], 6);
   L.control.zoom({ position: "topright" }).addTo(map);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", { subdomains: "abcd", maxZoom: 19, attribution: "© OpenStreetMap-Mitwirkende © CARTO" }).addTo(map);
+  if (CARTO_KEY) {
+    L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png?key=${CARTO_KEY}`, { subdomains: "abcd", maxZoom: 19,
+      attribution: "© OpenStreetMap-Mitwirkende © CARTO" }).addTo(map);
+  } else {
+    const esri = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
+    const o = { maxNativeZoom: 16, maxZoom: 19, attribution: "Tiles © Esri, © OpenStreetMap-Mitwirkende" };
+    L.tileLayer(esri + "World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", o).addTo(map);
+    L.tileLayer(esri + "World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", { maxNativeZoom: 16, maxZoom: 19 }).addTo(map);
+  }
   return map;
 }
 const fitTo = (map, spots) => { if (spots.length) map.fitBounds(spots.map(s => [s.lat, s.lon]), { padding: [60, 60], maxZoom: 16 }); };
