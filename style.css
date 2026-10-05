@@ -17,3 +17,5 @@ button{font:inherit;cursor:pointer}
 .leaflet-popup-tip{background:#1e122c}
 .leaflet-popup-content{margin:12px 16px;font-size:15px}
 .tag{display:inline-block;margin-top:6px;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:700;color:#120a1a;background:var(--c)}
+
+.dark-tiles{filter:invert(1) hue-rotate(200deg) saturate(.6) brightness(.9) contrast(.95)}
