@@ -1,4 +1,4 @@
-// Optional: kostenloser CARTO-Key von carto.com/basemaps/apikey. Leer lassen = Esri-Karte ohne Key.
+// Optional: kostenloser CARTO-Key von carto.com/basemaps/apikey. Leer lassen = OpenStreetMap-Kacheln (kein Key nötig).
 const CARTO_KEY = "";
 const TYPES = {
   geist:   { emoji: "👻", short: "Attraktion",  label: "Attraktion",                    color: "#a78bfa" },
@@ -18,10 +18,8 @@ function newMap(id) {
     L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png?key=${CARTO_KEY}`, { subdomains: "abcd", maxZoom: 19,
       attribution: "© OpenStreetMap-Mitwirkende © CARTO" }).addTo(map);
   } else {
-    const esri = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
-    const o = { maxNativeZoom: 16, maxZoom: 19, attribution: "Tiles © Esri, © OpenStreetMap-Mitwirkende" };
-    L.tileLayer(esri + "World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", o).addTo(map);
-    L.tileLayer(esri + "World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", { maxNativeZoom: 16, maxZoom: 19 }).addTo(map);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, className: "dark-tiles",
+      attribution: "© OpenStreetMap-Mitwirkende" }).addTo(map);
   }
   return map;
 }
