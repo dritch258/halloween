@@ -12,7 +12,7 @@ const popupHtml = s => { const k = typeOf(s);
 function newMap(id) {
   const map = L.map(id, { zoomControl: false }).setView([51.2, 10.4], 6);
   L.control.zoom({ position: "topright" }).addTo(map);
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap" }).addTo(map);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", { subdomains: "abcd", maxZoom: 19, attribution: "© OpenStreetMap-Mitwirkende © CARTO" }).addTo(map);
   return map;
 }
 const fitTo = (map, spots) => { if (spots.length) map.fitBounds(spots.map(s => [s.lat, s.lon]), { padding: [60, 60], maxZoom: 16 }); };
