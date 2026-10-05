@@ -10,14 +10,16 @@
 <link rel="stylesheet" href="style.css">
 <style>
 #map{position:fixed;inset:0}
-.top{position:fixed;z-index:1000;top:max(12px,env(safe-area-inset-top));left:12px;display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--surf);border:1px solid var(--line);border-radius:99px;backdrop-filter:blur(10px)}
+.top{position:fixed;z-index:1000;top:max(12px,env(safe-area-inset-top));left:12px;max-width:calc(100% - 24px);display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--surf);border:1px solid var(--line);border-radius:99px;backdrop-filter:blur(10px)}
 .top small{color:var(--muted);font-size:13px}
-.chips{position:fixed;z-index:1000;left:0;right:0;bottom:max(14px,env(safe-area-inset-bottom));display:flex;gap:8px;padding:0 12px;overflow-x:auto;scrollbar-width:none}
-.chips::-webkit-scrollbar{display:none}
-.chip{flex:none;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;color:var(--text);background:var(--surf);border:2px solid var(--c);border-radius:99px;backdrop-filter:blur(10px)}
+.chips{position:fixed;z-index:1000;left:12px;right:12px;bottom:max(14px,env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.chip{display:flex;align-items:center;justify-content:center;gap:6px;min-height:48px;padding:0 6px;font-size:14px;white-space:nowrap;color:var(--text);background:var(--surf);border:2px solid var(--c);border-radius:16px;backdrop-filter:blur(10px)}
 .chip[aria-pressed=false]{border-color:var(--line);color:var(--muted);opacity:.7}
-.loc{position:fixed;z-index:1000;right:12px;bottom:calc(max(14px,env(safe-area-inset-bottom)) + 62px);width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surf);color:var(--text);font-size:20px;backdrop-filter:blur(10px)}
-@media(min-width:700px){.chips{justify-content:center}.loc{bottom:90px}}
+.loc{position:fixed;z-index:1000;right:12px;bottom:calc(max(14px,env(safe-area-inset-bottom)) + 70px);width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surf);color:var(--text);font-size:20px;backdrop-filter:blur(10px)}
+@media(min-width:700px){.chips{left:50%;right:auto;transform:translateX(-50%);width:520px}.loc{bottom:90px}}
+.leaflet-bottom{margin-bottom:76px}
+@media(pointer:coarse){.leaflet-control-zoom{display:none}}
+@media(max-width:480px){.top{padding:8px 14px;gap:8px}.top h1{font-size:22px}.top small{font-size:12px}.chip{font-size:13px}}
 </style>
 </head>
 <body>
