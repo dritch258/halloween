@@ -1,1 +1,130 @@
-
+[
+  {
+    "id": "mv9hdayz",
+    "typ": "geist",
+    "name": "Süßes und Grusel",
+    "addr": "Ebertstraße 9",
+    "lat": 49.3477879,
+    "lon": 7.4075051
+  },
+  {
+    "id": "mv9hdy38",
+    "typ": "geist",
+    "name": "Süßes und Grusel",
+    "addr": "Mühlstraße 39",
+    "lat": 49.3540758,
+    "lon": 7.4045182
+  },
+  {
+    "id": "mv9hex13",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Friedhofstraße 7",
+    "lat": 49.3505661,
+    "lon": 7.4068714
+  },
+  {
+    "id": "mv9hlf3h",
+    "typ": "geist",
+    "name": "Gruselkabinett mit schaurigen Snacks und gruseligen Cocktails - WfB",
+    "addr": "Dorfplatz",
+    "lat": 49.349538,
+    "lon": 7.408623
+  },
+  {
+    "id": "mv9hzns8",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Friedhofstraße 40",
+    "lat": 49.35193515212428,
+    "lon": 7.408006473695231
+  },
+  {
+    "id": "mv9i06vo",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Friedhofstraße 4",
+    "lat": 49.350458736871275,
+    "lon": 7.407105245856833
+  },
+  {
+    "id": "mv9i2y4o",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Germannstraße 5",
+    "lat": 49.35013896811977,
+    "lon": 7.401260729241563
+  },
+  {
+    "id": "mv9i73g3",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Holunderweg 1",
+    "lat": 49.3559497,
+    "lon": 7.4060242
+  },
+  {
+    "id": "mv9i92io",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Hochstraße 14",
+    "lat": 49.35307085484385,
+    "lon": 7.400909351758172
+  },
+  {
+    "id": "mv9idgn5",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Heinrich-Heine-Straße 5",
+    "lat": 49.3547907,
+    "lon": 7.4024626
+  },
+  {
+    "id": "mv9imhv2",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Friedhofstraße 14",
+    "lat": 49.35055656431848,
+    "lon": 7.407236679707957
+  },
+  {
+    "id": "mv9irurp",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Wilhelmstraße 12",
+    "lat": 49.3492466,
+    "lon": 7.4047644
+  },
+  {
+    "id": "mv9jnmsb",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Fliederweg 2",
+    "lat": 49.3560596,
+    "lon": 7.4064994
+  },
+  {
+    "id": "mv9jo8qd",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Friedhofstraße 43",
+    "lat": 49.3522453,
+    "lon": 7.4079102
+  },
+  {
+    "id": "mv9josbp",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Schulstraße 2",
+    "lat": 49.3534926,
+    "lon": 7.4046304
+  },
+  {
+    "id": "mv9k0phk",
+    "typ": "geist",
+    "name": "Gruselhof",
+    "addr": "Friedhofstraße 20",
+    "lat": 49.35071909150766,
+    "lon": 7.407641709474123
+  }
+]
