@@ -174,5 +174,21 @@
     "addr": "Am Neupeter Hof 24",
     "lat": 49.358340039532166,
     "lon": 7.407663167146242
+  },
+  {
+    "id": "mvapiuxl",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Am Neupeter Hof 1",
+    "lat": 49.3577722,
+    "lon": 7.4081253
+  },
+  {
+    "id": "mvapjzys",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Goethestraße 3",
+    "lat": 49.3540575,
+    "lon": 7.4009658
   }
 ]
