@@ -15,7 +15,7 @@ const addrOf = r => { const a = r.address || {};
   const road = a.road || a.pedestrian || a.footway || a.path || a.cycleway || a.residential || a.square || "";
   return road ? road + (a.house_number ? " " + a.house_number : "") : shortAddr(r.display_name); };
 const typeOf = s => TYPES[s.typ] ? s.typ : "tuer";
-const pinIcon = k => L.divIcon({ className: "", iconSize: [42, 42], iconAnchor: [4, 42], popupAnchor: [17, -42],
+const pinIcon = k => L.divIcon({ className: "", iconSize: [32, 32], iconAnchor: [16, 39], popupAnchor: [0, -39],
   html: `<div class="pin" style="--c:${TYPES[k].color}"><span>${TYPES[k].emoji}</span></div>` });
 const popupHtml = s => { const k = typeOf(s);
   return `${s.name ? `<b>${esc(s.name)}</b><br>` : ""}${esc(shortAddr(s.addr))}<br><span class="tag" style="--c:${TYPES[k].color}">${TYPES[k].emoji} ${TYPES[k].label}</span>`; };
