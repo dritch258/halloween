@@ -11,8 +11,8 @@ button{font:inherit;cursor:pointer}
 .leaflet-control-zoom a{background:var(--surf)!important;color:var(--text)!important;border:1px solid var(--line)!important;backdrop-filter:blur(8px);width:40px!important;height:40px!important;line-height:40px!important;border-radius:12px!important;margin-bottom:6px}
 .leaflet-control-attribution{background:rgba(18,10,26,.7)!important;color:var(--muted)!important;font-size:10px}
 .leaflet-control-attribution a{color:var(--muted)!important}
-.pin{width:42px;height:42px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);background:#1e122c;border:3px solid var(--c);display:grid;place-items:center;box-shadow:0 0 14px var(--c),0 4px 10px #000a}
-.pin span{transform:rotate(45deg);font-size:21px;line-height:1}
+.pin{width:32px;height:32px;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);background:#1e122c;border:2px solid var(--c);display:grid;place-items:center;box-shadow:0 0 10px var(--c),0 3px 8px #000a}
+.pin span{transform:rotate(45deg);font-size:16px;line-height:1}
 .leaflet-popup-content-wrapper{background:var(--surf);color:var(--text);border:1px solid var(--line);border-radius:var(--r);backdrop-filter:blur(10px)}
 .leaflet-popup-tip{background:#1e122c}
 .leaflet-popup-content{margin:12px 16px;font-size:15px}
