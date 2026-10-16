@@ -190,5 +190,13 @@
     "addr": "Goethestraße 3",
     "lat": 49.3540575,
     "lon": 7.4009658
+  },
+  {
+    "id": "mvapodxt",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Germannstraße 28",
+    "lat": 49.3502486,
+    "lon": 7.4036427
   }
 ]
