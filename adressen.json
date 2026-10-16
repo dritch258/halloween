@@ -148,8 +148,8 @@
     "typ": "tuer",
     "name": "",
     "addr": "Wilhelmstraße 5",
-    "lat": 49.34996423940205,
-    "lon": 7.405316241737388
+    "lat": 49.34996774055845,
+    "lon": 7.405335013460925
   },
   {
     "id": "mvajmyk2",
@@ -198,5 +198,21 @@
     "addr": "Germannstraße 28",
     "lat": 49.3502486,
     "lon": 7.4036427
+  },
+  {
+    "id": "mvavtpfz",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Kastanienweg 9",
+    "lat": 49.3546289,
+    "lon": 7.4085342
+  },
+  {
+    "id": "mvavu6p3",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Wilhelmstraße 3",
+    "lat": 49.35008306449621,
+    "lon": 7.405394000244941
   }
 ]
