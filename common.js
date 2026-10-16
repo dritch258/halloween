@@ -15,8 +15,8 @@ const addrOf = r => { const a = r.address || {};
   const road = a.road || a.pedestrian || a.footway || a.path || a.cycleway || a.residential || a.square || "";
   return road ? road + (a.house_number ? " " + a.house_number : "") : shortAddr(r.display_name); };
 const typeOf = s => TYPES[s.typ] ? s.typ : "tuer";
-const pinIcon = k => L.divIcon({ className: "", iconSize: [32, 32], iconAnchor: [16, 39], popupAnchor: [0, -39],
-  html: `<div class="pin" style="--c:${TYPES[k].color}"><span>${TYPES[k].emoji}</span></div>` });
+const pinIcon = k => L.divIcon({ className: "", iconSize: [32, 39], iconAnchor: [16, 39], popupAnchor: [0, -39],
+  html: `<div class="sc"><div class="pin" style="--c:${TYPES[k].color}"><span>${TYPES[k].emoji}</span></div></div>` });
 const popupHtml = s => { const k = typeOf(s);
   return `${s.name ? `<b>${esc(s.name)}</b><br>` : ""}${esc(shortAddr(s.addr))}<br><span class="tag" style="--c:${TYPES[k].color}">${TYPES[k].emoji} ${TYPES[k].label}</span>`; };
 function newMap(id) {
@@ -29,6 +29,12 @@ function newMap(id) {
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, className: "dark-tiles",
       attribution: "© OpenStreetMap-Mitwirkende" }).addTo(map);
   }
+  // Marker mit dem Zoom skalieren: weit draußen klein, ganz weit draußen nur farbige Punkte
+  let k = 1;
+  const scale = () => { k = Math.min(1, Math.max(0.35, 0.35 + (map.getZoom() - 12) * 0.13));
+    const el = map.getContainer(); el.style.setProperty("--k", k.toFixed(2)); el.classList.toggle("far", k < 0.6); };
+  map.on("zoom zoomend", scale); scale();
+  map.on("popupopen", e => { e.popup.options.offset = L.point(0, Math.round(39 * (1 - k))); e.popup.update(); });
   return map;
 }
 const fitTo = (map, spots) => { if (spots.length) map.fitBounds(spots.map(s => [s.lat, s.lon]), { padding: [60, 60], maxZoom: 16 }); };
