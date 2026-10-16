@@ -28,32 +28,32 @@
     "typ": "geist",
     "name": "Gruselkabinett mit schaurigen Snacks und gruseligen Cocktails - WfB",
     "addr": "Dorfplatz",
-    "lat": 49.349538,
-    "lon": 7.408623
+    "lat": 49.349555384198794,
+    "lon": 7.408644860008563
   },
   {
     "id": "mv9hzns8",
     "typ": "tuer",
     "name": "",
     "addr": "Friedhofstraße 40",
-    "lat": 49.35193515212428,
-    "lon": 7.408006473695231
+    "lat": 49.35193689642199,
+    "lon": 7.408052097425664
   },
   {
     "id": "mv9i06vo",
     "typ": "tuer",
     "name": "",
     "addr": "Friedhofstraße 4",
-    "lat": 49.350458736871275,
-    "lon": 7.407105245856833
+    "lat": 49.35045348117041,
+    "lon": 7.407153558028937
   },
   {
     "id": "mv9i2y4o",
     "typ": "tuer",
     "name": "",
     "addr": "Germannstraße 5",
-    "lat": 49.35013896811977,
-    "lon": 7.401260729241563
+    "lat": 49.35011974506857,
+    "lon": 7.401284879094958
   },
   {
     "id": "mv9i73g3",
@@ -68,8 +68,8 @@
     "typ": "tuer",
     "name": "",
     "addr": "Hochstraße 14",
-    "lat": 49.35307085484385,
-    "lon": 7.400909351758172
+    "lat": 49.35305509734413,
+    "lon": 7.400957655204535
   },
   {
     "id": "mv9idgn5",
@@ -84,16 +84,16 @@
     "typ": "tuer",
     "name": "",
     "addr": "Friedhofstraße 14",
-    "lat": 49.35055656431848,
-    "lon": 7.407236679707957
+    "lat": 49.350539092353614,
+    "lon": 7.40727425494156
   },
   {
     "id": "mv9irurp",
     "typ": "tuer",
     "name": "",
     "addr": "Wilhelmstraße 12",
-    "lat": 49.3492466,
-    "lon": 7.4047644
+    "lat": 49.34923037054937,
+    "lon": 7.404785161236132
   },
   {
     "id": "mv9jnmsb",
@@ -124,7 +124,55 @@
     "typ": "geist",
     "name": "Gruselhof",
     "addr": "Friedhofstraße 20",
-    "lat": 49.35071909150766,
-    "lon": 7.407641709474123
+    "lat": 49.35066837992441,
+    "lon": 7.40765511677959
+  },
+  {
+    "id": "mvajkuan",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Langflur 13",
+    "lat": 49.34861531281252,
+    "lon": 7.405946559609366
+  },
+  {
+    "id": "mvajlhj0",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Im Daumenbösch 13",
+    "lat": 49.34689066417465,
+    "lon": 7.410331968232408
+  },
+  {
+    "id": "mvajm7qt",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Wilhelmstraße 5",
+    "lat": 49.34996423940205,
+    "lon": 7.405316241737388
+  },
+  {
+    "id": "mvajmyk2",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Altestraße 4",
+    "lat": 49.348402126131184,
+    "lon": 7.410348069588935
+  },
+  {
+    "id": "mvajok71",
+    "typ": "tuer",
+    "name": "Wenn leer, bitte klingeln für Nachschub",
+    "addr": "Friedhofstraße 46",
+    "lat": 49.352379,
+    "lon": 7.4084014
+  },
+  {
+    "id": "mvajp8jz",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Am Neupeter Hof 24",
+    "lat": 49.358340039532166,
+    "lon": 7.407663167146242
   }
 ]
