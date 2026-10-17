@@ -214,5 +214,45 @@
     "addr": "Wilhelmstraße 3",
     "lat": 49.35008306449621,
     "lon": 7.405394000244941
+  },
+  {
+    "id": "mvbxsv3r",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Heinrich-Heine-Straße 11",
+    "lat": 49.35418551810693,
+    "lon": 7.402722528747724
+  },
+  {
+    "id": "mvbxvp9j",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Germannstraße 4",
+    "lat": 49.349908333426605,
+    "lon": 7.400853025969099
+  },
+  {
+    "id": "mvbxypmx",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Hochstraße 6",
+    "lat": 49.353137,
+    "lon": 7.4025283
+  },
+  {
+    "id": "mvbxzows",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Am Neupeter Hof 12",
+    "lat": 49.3579925,
+    "lon": 7.4089235
+  },
+  {
+    "id": "mvby0e1b",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Hauptstraße 96",
+    "lat": 49.3489642,
+    "lon": 7.4087787
   }
 ]
