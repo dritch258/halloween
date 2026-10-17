@@ -254,5 +254,37 @@
     "addr": "Hauptstraße 96",
     "lat": 49.3489642,
     "lon": 7.4087787
+  },
+  {
+    "id": "mvcj5lfz",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Mühlstraße 47",
+    "lat": 49.3552356,
+    "lon": 7.4039655
+  },
+  {
+    "id": "mvcj5xyb",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Hauptstraße 66",
+    "lat": 49.3502114,
+    "lon": 7.4061889
+  },
+  {
+    "id": "mvcj7e3x",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Friedhofstraße 9",
+    "lat": 49.3506851,
+    "lon": 7.4069695
+  },
+  {
+    "id": "mvcj93lz",
+    "typ": "klingel",
+    "name": "Klingeln bei Klos",
+    "addr": "Friedhofstraße 8",
+    "lat": 49.350628,
+    "lon": 7.4089593
   }
 ]
