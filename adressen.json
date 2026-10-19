@@ -286,5 +286,29 @@
     "addr": "Friedhofstraße 8",
     "lat": 49.350628,
     "lon": 7.4089593
+  },
+  {
+    "id": "mvffwxtl",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Lambsborner Straße 24",
+    "lat": 49.3523074,
+    "lon": 7.4092176
+  },
+  {
+    "id": "mvffxfd8",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Hochstraße 37",
+    "lat": 49.3526083,
+    "lon": 7.3979319
+  },
+  {
+    "id": "mvffy0rm",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Finkenstraße 10",
+    "lat": 49.3505052,
+    "lon": 7.4015995
   }
 ]
