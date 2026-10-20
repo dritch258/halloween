@@ -310,5 +310,13 @@
     "addr": "Finkenstraße 10",
     "lat": 49.3505052,
     "lon": 7.4015995
+  },
+  {
+    "id": "mvg6i504",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Am Neupeter Hof 2",
+    "lat": 49.357542,
+    "lon": 7.4084515
   }
 ]
