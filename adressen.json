@@ -318,5 +318,13 @@
     "addr": "Am Neupeter Hof 2",
     "lat": 49.357542,
     "lon": 7.4084515
+  },
+  {
+    "id": "mvhuvsfz",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Lindenstraße 21",
+    "lat": 49.3567515,
+    "lon": 7.4073996
   }
 ]
