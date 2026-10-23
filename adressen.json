@@ -326,5 +326,13 @@
     "addr": "Lindenstraße 21",
     "lat": 49.3567515,
     "lon": 7.4073996
+  },
+  {
+    "id": "mvkiuv1o",
+    "typ": "tuer",
+    "name": "Unten vorm Haus",
+    "addr": "Uhlandstraße 18",
+    "lat": 49.35392868641148,
+    "lon": 7.399597764015199
   }
 ]
