@@ -334,5 +334,13 @@
     "addr": "Uhlandstraße 18",
     "lat": 49.35392868641148,
     "lon": 7.399597764015199
+  },
+  {
+    "id": "mvlyjo2v",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Mühlstraße 15",
+    "lat": 49.3523281,
+    "lon": 7.4035906
   }
 ]
