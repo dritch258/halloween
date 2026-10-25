@@ -342,5 +342,13 @@
     "addr": "Mühlstraße 15",
     "lat": 49.3523281,
     "lon": 7.4035906
+  },
+  {
+    "id": "mvnl5b7b",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Kirrberger Straße 9",
+    "lat": 49.3474646,
+    "lon": 7.4089681
   }
 ]
