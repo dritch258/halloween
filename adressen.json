@@ -350,5 +350,13 @@
     "addr": "Kirrberger Straße 9",
     "lat": 49.3474646,
     "lon": 7.4089681
+  },
+  {
+    "id": "mvnyfzpj",
+    "typ": "klingel",
+    "name": "",
+    "addr": "Tannenweg 4a",
+    "lat": 49.3554874,
+    "lon": 7.4072845
   }
 ]
