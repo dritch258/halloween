@@ -366,5 +366,13 @@
     "addr": "Buchenweg 13",
     "lat": 49.358091,
     "lon": 7.4073786
+  },
+  {
+    "id": "mvp58osx",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Uhlandstraße 23",
+    "lat": 49.3552318,
+    "lon": 7.401383
   }
 ]
