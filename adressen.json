@@ -374,5 +374,13 @@
     "addr": "Uhlandstraße 23",
     "lat": 49.3552318,
     "lon": 7.401383
+  },
+  {
+    "id": "mvpd0m4q",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Talstraße 20",
+    "lat": 49.3538713,
+    "lon": 7.4064091
   }
 ]
