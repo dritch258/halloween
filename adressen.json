@@ -382,5 +382,13 @@
     "addr": "Talstraße 20",
     "lat": 49.3538713,
     "lon": 7.4064091
+  },
+  {
+    "id": "mvq8er4v",
+    "typ": "klingel",
+    "name": "",
+    "addr": "Friedhofstraße 37a",
+    "lat": 49.352055706522535,
+    "lon": 7.406574189662934
   }
 ]
