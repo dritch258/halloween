@@ -390,5 +390,29 @@
     "addr": "Friedhofstraße 37a",
     "lat": 49.352055706522535,
     "lon": 7.406574189662934
+  },
+  {
+    "id": "mvqjw7we",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Hauptstraße 60",
+    "lat": 49.3504724,
+    "lon": 7.4053182
+  },
+  {
+    "id": "mvqjwxcg",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Hauptstraße 55",
+    "lat": 49.3508309,
+    "lon": 7.4050194
+  },
+  {
+    "id": "mvqjxvoa",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Wilhelmstraße 16",
+    "lat": 49.3489242,
+    "lon": 7.4045947
   }
 ]
