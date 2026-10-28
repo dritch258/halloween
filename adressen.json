@@ -414,5 +414,45 @@
     "addr": "Wilhelmstraße 16",
     "lat": 49.3489242,
     "lon": 7.4045947
+  },
+  {
+    "id": "mvro57ft",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Waldstraße 3",
+    "lat": 49.3510504,
+    "lon": 7.3997776
+  },
+  {
+    "id": "mvroapbw",
+    "typ": "tuer",
+    "name": "Metzgerei Burgard",
+    "addr": "Hauptstraße 76-78",
+    "lat": 49.34968,
+    "lon": 7.4070821
+  },
+  {
+    "id": "mvrobiid",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Mühlstraße 4",
+    "lat": 49.3516269,
+    "lon": 7.4028918
+  },
+  {
+    "id": "mvrodjh6",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Friedhofstraße 26",
+    "lat": 49.3511145,
+    "lon": 7.4076238
+  },
+  {
+    "id": "mvrodybi",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Buchenweg 11",
+    "lat": 49.357919,
+    "lon": 7.4074697
   }
 ]
