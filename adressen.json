@@ -454,5 +454,45 @@
     "addr": "Buchenweg 11",
     "lat": 49.357919,
     "lon": 7.4074697
+  },
+  {
+    "id": "mvt32sik",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Lambsborner Straße 22",
+    "lat": 49.3521501,
+    "lon": 7.4091942
+  },
+  {
+    "id": "mvt37cqv",
+    "typ": "geist",
+    "name": "In der Einfahrt am Tor hängen Tütchen",
+    "addr": "Hauptstraße 31",
+    "lat": 49.3515442,
+    "lon": 7.4019571
+  },
+  {
+    "id": "mvt3s7vk",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Tannenweg 7",
+    "lat": 49.355048,
+    "lon": 7.4064355
+  },
+  {
+    "id": "mvt3si37",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Waldstraße 1",
+    "lat": 49.3512253,
+    "lon": 7.3997446
+  },
+  {
+    "id": "mvt3t00d",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Talstraße 13",
+    "lat": 49.3537093,
+    "lon": 7.4068302
   }
 ]
