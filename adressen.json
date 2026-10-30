@@ -510,5 +510,13 @@
     "addr": "Wilhelmstraße 8",
     "lat": 49.3497733,
     "lon": 7.4050192
+  },
+  {
+    "id": "mvuw7yjr",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Schubertstraße 7",
+    "lat": 49.3521104,
+    "lon": 7.4019104
   }
 ]
