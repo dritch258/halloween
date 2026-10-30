@@ -518,5 +518,37 @@
     "addr": "Schubertstraße 7",
     "lat": 49.3521104,
     "lon": 7.4019104
+  },
+  {
+    "id": "mvuyn9ju",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Schlehenweg 6",
+    "lat": 49.355842,
+    "lon": 7.4072813
+  },
+  {
+    "id": "mvvd835i",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Im Daumenbösch 9",
+    "lat": 49.3469385,
+    "lon": 7.4108501
+  },
+  {
+    "id": "mvvd8tqm",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Schmittenflur 10",
+    "lat": 49.3524596,
+    "lon": 7.4043574
+  },
+  {
+    "id": "mvvd9qgm",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Hochstraße 25",
+    "lat": 49.3526918,
+    "lon": 7.4001546
   }
 ]
