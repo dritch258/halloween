@@ -502,5 +502,13 @@
     "addr": "Mühlstraße 2",
     "lat": 49.35145990225993,
     "lon": 7.402977347373963
+  },
+  {
+    "id": "mvut2hmp",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Wilhelmstraße 8",
+    "lat": 49.3497733,
+    "lon": 7.4050192
   }
 ]
