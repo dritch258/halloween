@@ -550,5 +550,29 @@
     "addr": "Hochstraße 25",
     "lat": 49.3526918,
     "lon": 7.4001546
+  },
+  {
+    "id": "mvw0v6um",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Eichenweg 19",
+    "lat": 49.3543655,
+    "lon": 7.4064702
+  },
+  {
+    "id": "mvw0vzja",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Lambsborner Straße 42",
+    "lat": 49.3540227,
+    "lon": 7.4089993
+  },
+  {
+    "id": "mvw0wyo1",
+    "typ": "tuer",
+    "name": "Süßes in der Einfahrt",
+    "addr": "Holunderweg 4",
+    "lat": 49.3556018,
+    "lon": 7.4057258
   }
 ]
