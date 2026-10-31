@@ -574,5 +574,21 @@
     "addr": "Holunderweg 4",
     "lat": 49.3556018,
     "lon": 7.4057258
+  },
+  {
+    "id": "mvw121yj",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Uhlandstraße 12",
+    "lat": 49.3536777,
+    "lon": 7.3986876
+  },
+  {
+    "id": "mvw128cb",
+    "typ": "tuer",
+    "name": "",
+    "addr": "Talstraße 22",
+    "lat": 49.3538401,
+    "lon": 7.4061795
   }
 ]
