@@ -7,7 +7,7 @@
 <title>Halloween</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Creepster&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3">
 <style>
 #map{position:fixed;inset:0}
 .top small{color:var(--muted);font-size:13px}
@@ -30,6 +30,14 @@
 .sheet li div{min-width:0}
 .sheet b,.sheet small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sheet small{color:var(--muted)}
+#routebox{padding:10px;border-top:1px solid var(--line)}
+#rbtn{width:100%;min-height:46px;border:0;border-radius:12px;background:var(--orange);color:#120a1a;font:700 15px system-ui,sans-serif}
+#rlinks{display:grid;gap:8px;margin-top:8px}
+#rlinks:empty{display:none}
+#rlinks a{display:block;padding:12px;border-radius:12px;border:1px solid var(--line);color:var(--slime);text-align:center;text-decoration:none;font-weight:700}
+.thanks{margin:4px 0 2px;max-width:300px;text-align:center;font-size:15px;line-height:1.45;color:var(--text)}
+.ende .chips,.ende .loc,.ende #cnt,.ende .sheet{display:none}
+.ende .top{padding-bottom:12px}
 .leaflet-bottom{margin-bottom:76px}
 @media(pointer:coarse){.leaflet-control-zoom{display:none}}
 @media(max-width:480px){.top{padding:8px 18px 4px}.top h1{font-size:22px}.top small{font-size:12px}.chip{font-size:13px}}
@@ -37,16 +45,25 @@
 </head>
 <body>
 <div id="map"></div>
-<div class="top"><h1>🎃 Halloween 🎃</h1><button id="cnt" aria-expanded="false" aria-controls="sheet"></button></div>
-<div class="sheet" id="sheet" role="dialog" aria-label="Adressen"><input type="search" id="q" placeholder="Suchen …" aria-label="Adressen durchsuchen"><ul id="slist"></ul></div>
+<div class="top"><h1>🎃 Halloween 🎃</h1><button id="cnt" aria-expanded="false" aria-controls="sheet"></button><p class="thanks" id="thanks" hidden>Danke an alle! 🧡<br>War schön. Bis nächstes Jahr! 👻</p></div>
+<div class="sheet" id="sheet" role="dialog" aria-label="Adressen"><input type="search" id="q" placeholder="Suchen …" aria-label="Adressen durchsuchen"><ul id="slist"></ul><div id="routebox"><button id="rbtn" type="button">🧭 Route aus sichtbaren Adressen</button><div id="rlinks"></div></div></div>
 <button class="loc" id="loc" aria-label="Meinen Standort anzeigen">📍</button>
 <nav class="chips" id="chips" aria-label="Filter"></nav>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="common.js"></script>
+<script src="common.js?v=3"></script>
 <script>
 const map = newMap("map");
 const groups = {}, btns = {}, $ = id => document.getElementById(id);
+
+// Nach Halloween: auf true lassen = nur Bechhofen und Dankeschön, keine Marker.
+// Nächstes Jahr auf false setzen, dann erscheinen die Adressen wieder.
+const ENDE = true;
+if (ENDE) {
+  document.body.classList.add("ende");
+  $("thanks").hidden = false;
+  map.setView([49.35, 7.40], 15);
+}
 const chips = document.getElementById("chips");
 Object.keys(TYPES).forEach(k => {
   groups[k] = L.layerGroup().addTo(map);
@@ -62,7 +79,7 @@ Object.keys(TYPES).forEach(k => {
 });
 
 let stand = "";
-fetch("adressen.json?t=" + Date.now()).then(r => { stand = r.headers.get("Last-Modified") || ""; return r.json(); }).then(spots => {
+if (!ENDE) fetch("adressen.json?t=" + Date.now()).then(r => { stand = r.headers.get("Last-Modified") || ""; return r.json(); }).then(spots => {
   const cnt = $("cnt"), sheet = $("sheet"), list = $("slist"), q = $("q"), marks = new Map();
   spots.forEach(s => { const k = typeOf(s);
     marks.set(s, L.marker([s.lat, s.lon], { icon: pinIcon(k), title: s.name || "" }).bindPopup(popupHtml(s)).addTo(groups[k])); });
@@ -92,6 +109,37 @@ fetch("adressen.json?t=" + Date.now()).then(r => { stand = r.headers.get("Last-M
     if (!list.children.length) list.innerHTML = '<li class="none">Keine Treffer.</li>';
   };
   q.oninput = fill;
+
+  // Route: nächste Adresse zuerst (Luftlinie), Google Maps zu Fuß, max. 10 Stopps pro Link
+  const dist = (a, b) => { const r = x => x * Math.PI / 180, dl = r(b.lat - a.lat), dn = r(b.lon - a.lon);
+    const v = Math.sin(dl / 2) ** 2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(dn / 2) ** 2; return 2 * Math.asin(Math.sqrt(v)); };
+  const order = (pts, from) => {
+    const left = pts.slice(), out = []; let cur = from;
+    if (!cur) { cur = left.shift(); out.push(cur); }
+    while (left.length) { let bi = 0; left.forEach((p, i) => { if (dist(cur, p) < dist(cur, left[bi])) bi = i; }); cur = left.splice(bi, 1)[0]; out.push(cur); }
+    return out;
+  };
+  const buildRoute = pos => {
+    const vis = spots.filter(s => btns[typeOf(s)].getAttribute("aria-pressed") === "true");
+    const box = $("rlinks"); box.innerHTML = "";
+    if (!vis.length) { box.textContent = "Keine Adressen sichtbar."; return; }
+    const ord = order(vis, pos), N = 10, ll = s => s.lat + "," + s.lon;
+    for (let i = 0; i < ord.length; i += N) {
+      const part = ord.slice(i, i + N), dest = part[part.length - 1], via = part.slice(0, -1);
+      let u = "https://www.google.com/maps/dir/?api=1&travelmode=walking&destination=" + ll(dest);
+      if (via.length) u += "&waypoints=" + encodeURIComponent(via.map(ll).join("|"));
+      const org = i ? ord[i - 1] : pos; if (org) u += "&origin=" + ll(org);
+      const a = document.createElement("a"); a.href = u; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = (ord.length > N ? "Etappe " + (i / N + 1) + " · Stopps " + (i + 1) + "–" + (i + part.length) : "Route mit " + part.length + " Stopps") + " in Google Maps ▸";
+      box.appendChild(a);
+    }
+  };
+  $("rbtn").onclick = () => {
+    const btn = $("rbtn"); btn.textContent = "Standort wird gesucht …";
+    const done = pos => { btn.textContent = "🧭 Route aus sichtbaren Adressen"; buildRoute(pos); };
+    if (!navigator.geolocation) return done(null);
+    navigator.geolocation.getCurrentPosition(p => done({ lat: p.coords.latitude, lon: p.coords.longitude }), () => done(null), { timeout: 6000 });
+  };
   const d = stand && new Date(stand);
   cnt.textContent = !spots.length ? "Noch keine Adressen" : (d && !isNaN(d) ? "Aktualisiert: " + d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" }) : "Adressen") + " \u25BE";
   cnt.onclick = () => { if (!spots.length) return; if (sheet.classList.contains("open")) return close(); fill(); sheet.classList.add("open"); cnt.setAttribute("aria-expanded", "true"); };
